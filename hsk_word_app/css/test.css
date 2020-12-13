@@ -20,12 +20,13 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 26rem;
-  height: 44rem;
-  margin-left: -13rem;
-  margin-top: -22rem;
+  width: 36rem;
+  height: 64rem;
+  margin-left: -18rem;
+  margin-top: -32rem;
   border-radius: 0.5rem;
   background: #fff;
+  color: black;
   -webkit-box-shadow: 0.3rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
           box-shadow: 0.3rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
 }
@@ -52,7 +53,7 @@ body {
 .demo__menu-btn {
   z-index: 3;
   position: absolute;
-  right: 1.5rem;
+  left: 1.5rem;
   top: 1.5rem;
   width: 2.4rem;
   height: 1rem;
@@ -89,7 +90,7 @@ body {
 }
 
 .demo.menu-active .demo__menu-btn-line {
-  width: 26rem;
+  width: 36rem;
   -webkit-transition: width 0.4s, -webkit-transform 0.4s 0.32s;
   transition: width 0.4s, -webkit-transform 0.4s 0.32s;
   transition: width 0.4s, transform 0.4s 0.32s;
@@ -272,9 +273,9 @@ body {
 
 .demo__section-heading {
   margin-bottom: 2rem;
-  margin-left: 1rem;
-  text-align: left;
-  font-size: 2rem;
+  margin-left: 2.5rem;
+  text-align: center;
+  font-size: 2.5rem;
   text-transform: uppercase;
 }
 
@@ -304,7 +305,7 @@ body {
 
 .footer {
   width: 100%;
-  bottom: 225px;
+  bottom: 0;
   font-size: 12px;
   text-align: center;
   position: fixed;

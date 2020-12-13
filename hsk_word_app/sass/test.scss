@@ -15,8 +15,8 @@ body {
   font-family: $openSans;
 }
 
-$w: 26rem;
-$h: 44rem;
+$w: 36rem;
+$h: 64rem;
 $animStep: 0.4s;
 $menuItemSlideAT: 0.2s;
 $menuItemClickedAT: 0.3s;
@@ -34,6 +34,7 @@ $menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
   margin-top: $h/-2;
   border-radius: 0.5rem;
   background: #fff;
+  color: rgb(0, 0, 0);
   box-shadow: 0.3rem 0.5rem 0.5rem rgba(0,0,0,0.2);
   
   &__overlay {
@@ -56,7 +57,7 @@ $menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
   &__menu-btn {
     z-index: 3;
     position: absolute;
-    right: 1.5rem;
+    left: 1.5rem;
     top: 1.5rem;
     width: 2.4rem;
     height: 1rem;
@@ -223,9 +224,9 @@ $menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
   
   &__section-heading {
     margin-bottom: 2rem;
-    margin-left: 1rem;
-    text-align: left;
-    font-size: 2rem;
+    margin-left: 2.5rem;
+    text-align: center;
+    font-size: 2.5rem;
     text-transform: uppercase;
   }
   
@@ -247,7 +248,7 @@ $menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
 
 .footer {
   width: 100%;
-  bottom: 225px;
+  bottom: 0;
   font-size: 12px;
   text-align: center;
   position: fixed;
