@@ -204,7 +204,7 @@ $menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
     opacity: 0;
     transition: opacity $animStep;
     pointer-events: none;
-    
+  
     // &:after {
     //   content: "";
     //   position: absolute;
@@ -234,6 +234,15 @@ $menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
     text-align: left;
     font-size: 1.5rem;
     margin-left: 3px;
+  }
+
+  &__container{
+    width: 335px;
+    height: 550px;
+    border: 1px solid;
+    padding: 10px;
+    overflow: scroll;
+    background-color: #fff;
   }
 }
 

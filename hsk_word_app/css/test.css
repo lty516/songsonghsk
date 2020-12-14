@@ -285,6 +285,15 @@ body {
   margin-left: 3px;
 }
 
+.demo__container {
+  width: 335px;
+  height: 550px;
+  border: 1px solid;
+  padding: 10px;
+  overflow: scroll;
+  background-color: #fff;
+}
+
 @-webkit-keyframes menuItemClicked {
   0% {
     background-color: #7F91A4;
