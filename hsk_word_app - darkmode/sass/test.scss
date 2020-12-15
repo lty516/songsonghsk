@@ -1,0 +1,267 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-size: 62.5%;
+}
+
+$openSans: 'Open Sans', Helvetica, Arial, sans-serif;
+
+body {
+  background: rgb(25, 31, 44);
+  
+  font-family: $openSans;
+}
+
+$w: 36rem;
+$h: 58rem; //63rem
+$animStep: 0.4s;
+$menuItemSlideAT: 0.2s;
+$menuItemClickedAT: 0.3s;
+$menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
+
+.demo {
+  z-index: 1;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: $w;
+  height: $h;
+  margin-left: $w/-2;
+  margin-top: $h/-2;
+  border-radius: 0.5rem;
+  background: rgb(39, 43, 56);
+  color: rgb(183, 193, 204);
+  box-shadow: 0.3rem 0.5rem 0.5rem rgba(0,0,0,0.222);
+  
+  &__overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.0);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity $animStep $menuTextAT;
+    
+    .demo.menu-active & {
+      opacity: 1;
+      transition: opacity $animStep $animStep;
+    }
+  }
+
+  &__menu-btn {
+    z-index: 3;
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+    width: 2.4rem;
+    height: 4rem;
+    transition: transform $animStep $animStep + $menuTextAT;
+    cursor: pointer;
+    transform: translate3d(0,0,0);
+
+    .demo.menu-active & {
+      transition: transform $animStep;
+      transform: translate3d(-2rem,0,0);
+    }
+
+    &-line {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 0.2rem;
+      background: #879BAF;
+      transition: width $animStep $animStep + $menuTextAT, transform $animStep $menuTextAT;
+      transform: translate3d(0,0,0);
+
+      .demo.menu-active & {
+        width: $w;
+        transition: width $animStep, transform $animStep $animStep * 0.8;
+      }
+
+      &:nth-child(1) {
+        top: 0;
+
+        .demo.menu-active & {
+          transform: translate3d(0,4rem,0);
+        }
+      }
+      &:nth-child(2) {
+        top: 0.7rem;
+
+        .demo.menu-active & {
+          transform: translate3d(0,9.5rem,0);
+        }
+      }
+      &:nth-child(3) {
+        top: 1.4rem;
+
+        .demo.menu-active & {
+          transform: translate3d(0,15rem,0);
+        }
+      }
+      &:nth-child(4) {
+        top: 2.1rem;
+
+        .demo.menu-active & {
+          transform: translate3d(0,20.5rem,0);
+        }
+      }
+      &:nth-child(5) {
+        top: 2.8rem;
+
+        .demo.menu-active & {
+          transform: translate3d(0,26rem,0);
+        }
+      }
+      &:nth-child(6) {
+        top: 3.5rem;
+
+        .demo.menu-active & {
+          transform: translate3d(0,31.5rem,0);
+        }
+      }
+    }
+  }
+
+  &__menu-bg {
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 44rem;
+    background: #272b38;
+    border-bottom: 0.2rem solid #879BAF;
+    transform: scaleY(0.3);
+    transform-origin: 50% 0;
+    opacity: 0;
+    transition: opacity $animStep / 2 $animStep / 2 + $menuTextAT, transform $animStep $menuTextAT;
+    pointer-events: none;
+
+    .demo.menu-active & {
+      pointer-events: auto;
+      transform: scaleY(1);
+      opacity: 1;
+      transition: opacity $animStep / 2 $animStep, transform $animStep $animStep;
+    }
+  }
+
+  &__menu-items {
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    pointer-events: none;
+    
+    .demo.menu-active & {
+      pointer-events: auto;
+    }
+  }
+
+  &__menu-item {
+    height: 6rem;
+    padding-left: 2rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.8rem;
+    line-height: 6rem;
+    color: #7F91A4;
+    background-color: rgba(#7F91A4, 0);
+    opacity: 0;
+    transform: translateX(-1rem);
+    transition: opacity $menuItemSlideAT $menuItemClickedAT / 2, transform $menuItemSlideAT $menuItemClickedAT / 2;
+    cursor: pointer;
+    
+    &.clicked {
+      animation: menuItemClicked $menuItemClickedAT;
+    }
+
+    .demo.menu-active &  {
+      opacity: 1;
+      transform: translateX(0);
+      
+      @for $i from 1 through 4 {
+        &:nth-child(#{$i}) {
+          transition: opacity $menuItemSlideAT $animStep + ($i - 1) * 0.15s, transform $menuItemSlideAT $animStep + ($i - 1) * 0.15s;
+        }
+      }
+    }
+  }
+  
+  &__section {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5% 3% 5%;
+    opacity: 0;
+    transition: opacity $animStep;
+    pointer-events: none;
+  
+    // &:after {
+    //   content: "";
+    //   position: absolute;
+    //   left: 1rem;
+    //   bottom: 1rem;
+    //   width: $w - 2rem;
+    //   height: 47rem;
+    //   border-radius: 0.5rem;
+    //   background: #E7F6FB;
+    // }
+    
+    &.active-section {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+  
+  &__section-heading {
+    margin-bottom: 3%;
+    margin-left: 5%;
+    text-align: center;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
+  
+  &__description {
+    text-align: left;
+    font-size: 1.5rem;
+    margin-left: 3px;
+  }
+
+  &__container{
+    width: 99%;
+    height: 94%;
+    border: 0px solid;
+    padding-top: 3px;
+    overflow: scroll;
+    color: #b7c1cc;
+    background-color: #272b38;
+  }
+  &__footer {
+    width: 100%;
+    bottom: 2%;
+    font-size: 12px;
+    color: #b7c1cc;
+    text-align: center;
+    position: fixed;
+    z-index: 9999;
+  } 
+}
+
+@keyframes menuItemClicked {
+  0% {
+    background-color: #7F91A4;
+  }
+  100% {
+    background-color: rgba(#7F91A4,0);
+  }
+}
