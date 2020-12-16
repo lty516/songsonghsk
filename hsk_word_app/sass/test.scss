@@ -243,6 +243,7 @@ $menuTextAT: $menuItemSlideAT + $menuItemClickedAT / 2;
     border: 0px solid;
     padding-top: 3px;
     overflow: scroll;
+    overflow-x: hidden;
     color: #b7c1cc;
     background-color: #272b38;
   }
